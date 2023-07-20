@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stasiun Pantau</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Crimson+Text:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+
+  <body>
+    <div class="row gx-1 navigasi-judul">
+      <img
+        src="../static/logoputih.png"
+        alt="River"
+        class="col-4 col-md-2 col-lg-1 img-fluid"
+      />
+      <div class="col-6 col-md-8 col-lg-4">
+        Kualitas Air Sungai Citarum<br />
+        Provinsi Jawa Barat
+      </div>
+      <div
+        class="col-2 col-lg-6 col-md-6 d-flex flex-row justify-content-center gap-5 nav nav-underline navbar"
+      >
+        <a class="nav-link" id="home" href="/home">Home</a>
+        <a class="nav-link" id="stasiun" href="/stasiun">Stasiun</a>
+        <li class="nav-item dropdown" id="kalkulator" data-bs-theme="dark">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false"
+            >Kalkulator</a
+          >
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="/formknn">KNN</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/formsvm">SVM</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/formrf">Random Forest</a>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div
+        class="col-lg-1 col-2 d-flex align-items-center justify-content-end p-3 gap-2"
+      >
+        <div class="logout" data-bs-theme="dark">
+          <a
+            href="#"
+            id="logout-menu"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><i data-feather="user"></i
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          </ul>
+        </div>
+        <div class="hamburger">
+          <a
+            data-bs-toggle="offcanvas"
+            href="#offcanvasWithBothOptions"
+            id="hamburger-menu"
+            ><i data-feather="menu"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+    <div
+      data-bs-theme="dark"
+      class="offcanvas offcanvas-width-25 offcanvas-end"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvasWithBothOptions"
+    >
+      <div class="offcanvas-header ps-4 pe-4">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menu</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="nav nav-underline">
+          <a class="nav-link" href="/home">Home</a>
+          <a class="nav-link" href="/stasiun">Stasiun</a>
+          <li class="nav-item dropdown" data-bs-theme="dark">
+            <a
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-expanded="false"
+              >Kalkulator</a
+            >
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="/formknn">KNN</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/formsvm">SVM</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/formrf">Random Forest</a>
+              </li>
+            </ul>
+          </li>
+          <a class="nav-link" href="/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="gx-0 p-0">
+        <nav
+          class="nav nav-underline nav-fill d-flex flex-sm-column flex-lg-row"
+        >
+          <a class="nav-link active" href="/stasiun">Stasiun Pantau</a>
+          <a class="nav-link" href="/kualitasknn">Kualitas KNN</a>
+          <a class="nav-link" href="/kualitassvm">Kualitas SVM</a>
+          <a class="nav-link" href="/kualitasrf">Kualitas RF</a>
+        </nav>
+      </div>
+    </div>
+    <!-- Tabel Daftar Stasiun Pantau -->
+    <div class="row-4 m-3">
+      <a class="btn btn-success" href="/tambahdata"
+        ><i data-feather="plus"></i> Tambah Data</a
+      >
+    </div>
+    <div class="row-8">
+      <div class="m-3 table-responsive">
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Nama Sungai</th>
+              <th>Nama Stasiun</th>
+              <th>Alamat</th>
+              <th>Longitude</th>
+              <th>Latitude</th>
+              <th>Edit/Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in data: %}
+            <tr>
+              <th>{{ loop.index }}</th>
+              <th>{{row[1]}}</th>
+              <th>{{row[2]}}</th>
+              <th>{{row[3]}}</th>
+              <th>{{row[4]}}</th>
+              <th>{{row[5]}}</th>
+              <th>
+                <a
+                  type="button"
+                  class="btn btn-success"
+                  href="/edit/{{ row[0] }}"
+                  >Edit</a
+                >
+              </th>
+              <th>
+                <a
+                  type="button"
+                  class="btn btn-danger"
+                  href="/delete/{{ row[0] }}"
+                  >Delete</a
+                >
+              </th>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      feather.replace();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

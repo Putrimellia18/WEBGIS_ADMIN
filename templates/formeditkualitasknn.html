@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+  <body>
+    <div class="row gx-1 navigasi-judul">
+      <img
+        src="../static/logoputih.png"
+        alt="River"
+        class="col-4 col-md-2 col-lg-1 img-fluid"
+      />
+      <div class="col-6 col-md-8 col-lg-4">
+        Kualitas Air Sungai Citarum<br />
+        Provinsi Jawa Barat
+      </div>
+      <div
+        class="col-2 col-lg-6 col-md-6 d-flex flex-row justify-content-center gap-5 nav nav-underline navbar"
+      >
+        <a class="nav-link" id="home" href="/home">Home</a>
+        <a class="nav-link" id="stasiun" href="/stasiun">Stasiun</a>
+        <li class="nav-item dropdown" id="kalkulator" data-bs-theme="dark">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false"
+            >Kalkulator</a
+          >
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="/formknn">KNN</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/formsvm">SVM</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/formrf">Random Forest</a>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div
+        class="col-lg-1 col-2 d-flex align-items-center justify-content-end p-3 gap-2"
+      >
+        <div class="logout">
+          <div class="logout" data-bs-theme="dark">
+            <a
+              href="#"
+              id="logout-menu"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              ><i data-feather="user"></i
+            ></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="hamburger">
+          <a
+            data-bs-toggle="offcanvas"
+            href="#offcanvasWithBothOptions"
+            id="hamburger-menu"
+            ><i data-feather="menu"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+    <div
+      data-bs-theme="dark"
+      class="offcanvas offcanvas-width-25 offcanvas-end"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvasWithBothOptions"
+    >
+      <div class="offcanvas-header ps-4 pe-4">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menu</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="nav nav-underline">
+          <a class="nav-link" href="/home">Home</a>
+          <a class="nav-link" href="/stasiun">Stasiun</a>
+          <li class="nav-item dropdown" data-bs-theme="dark">
+            <a
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-expanded="false"
+              >Kalkulator</a
+            >
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="/formknn">KNN</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/formsvm">SVM</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/formrf">Random Forest</a>
+              </li>
+            </ul>
+          </li>
+          <a class="nav-link" href="/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+    <div class="row p-3">
+      <form action="{{url_for('successeditkualitasknn')}}" method="post">
+        <input type="hidden" name="id" value="{{ data[0] }}" />
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-floating m-3">
+              <input
+                type="text"
+                name="ph"
+                class="form-control"
+                id="floatingpH"
+                placeholder="Masukkan Nilai pH"
+                required="required"
+              />
+              <label for="floatingpH">pH</label>
+            </div>
+            <div class="form-floating m-3">
+              <input
+                type="text"
+                name="tss"
+                class="form-control"
+                id="floatingTSS"
+                placeholder="Masukkan Nilai TSS"
+                required="required"
+              />
+              <label for="floatingTSS">TSS</label>
+            </div>
+            <div class="form-floating m-3">
+              <input
+                type="text"
+                name="do"
+                class="form-control"
+                id="floatingDO"
+                placeholder="Masukkan Nilai DO"
+                required="required"
+              />
+              <label for="floatingDO">DO</label>
+            </div>
+            <div class="form-floating m-3">
+              <input
+                type="text"
+                name="bod"
+                class="form-control"
+                id="floatingBOD"
+                placeholder="Masukkan Nilai BOD"
+                required="required"
+              />
+              <label for="floatingBOD">BOD</label>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-floating m-3">
+              <input
+                type="text"
+                name="cod"
+                class="form-control"
+                id="floatingCOD"
+                placeholder="Masukkan Nilai COD"
+                required="required"
+              />
+              <label for="floatingCOD">COD</label>
+            </div>
+            <div class="form-floating m-3">
+              <input
+                type="text"
+                name="nitrat"
+                class="form-control"
+                id="floatingNitrat"
+                placeholder="Masukkan Nilai Nitrat"
+                required="required"
+              />
+              <label for="floatingNitrat">Nitrat</label>
+            </div>
+            <div class="form-floating m-3">
+              <input
+                type="text"
+                name="fecal"
+                class="form-control"
+                id="floatingFecalColiform"
+                placeholder="Masukkan Nilai FecalColiform"
+                required="required"
+              />
+              <label for="floatingFecalColiform">Fecal Coliform</label>
+            </div>
+            <div class="form-floating m-3">
+              <input
+                type="text"
+                name="fosfat"
+                class="form-control"
+                id="floatingFosfat"
+                placeholder="Masukkan Nilai Fosfat"
+                required="required"
+              />
+              <label for="floatingFosfat">Fosfat</label>
+            </div>
+            <div class="d-flex gap-2 justify-content-end me-3">
+              <button type="submit" class="btn btn-primary">
+                <i data-feather="save"></i>Simpan
+              </button>
+              <a type="button" class="btn btn-danger" href="/kualitasknn">
+                <i data-feather="corner-up-left"></i> Batal
+              </a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script>
+      feather.replace();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

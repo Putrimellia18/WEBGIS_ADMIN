@@ -1,0 +1,143 @@
+* {
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  padding: 0px;
+  margin: 0px;
+  font-weight: 400;
+}
+.burger {
+  color: white;
+}
+.burger :hover {
+  color: rgb(255, 162, 0);
+}
+.navigasi-judul {
+  display: flex;
+  flex-direction: row;
+  background-color: #19274d;
+  font-size: 1.5rem;
+  color: white;
+  padding: 2%;
+}
+.navigasi-judul div {
+  font-family: "Abril Fatface", cursive;
+}
+.container {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  height: 75%;
+  width: 50%;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+.judul-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4vw;
+}
+.submit-login {
+  background-color: white;
+}
+.submit-login:hover {
+  color: white;
+  background-color: #19274d;
+}
+.navbar {
+  font-size: 1.2rem;
+  align-items: center;
+  margin: 2;
+  display: none;
+}
+.navbar a {
+  color: white;
+}
+.navbar a:hover {
+  color: cornflowerblue;
+}
+.hamburger a {
+  color: white;
+}
+.hamburger a:hover {
+  color: cornflowerblue;
+}
+.logout a {
+  color: white;
+}
+.logout a:hover {
+  color: cornflowerblue;
+}
+.offcanvas {
+  height: 100% !important;
+  width: 15rem !important;
+}
+.offcanvas-header {
+  background-color: #19274d;
+  color: white;
+}
+.offcanvas-body {
+  background-color: rgb(25, 39, 77);
+}
+.offcanvas-body a {
+  color: white;
+}
+.offcanvas-body a:hover {
+  color: cornflowerblue;
+}
+.offcanvas-body .nav {
+  display: block;
+  text-align: center;
+}
+.title {
+  font-size: 1rem;
+  justify-content: center;
+  text-align: center;
+  font-family: "Abril Fatface", cursive !important;
+}
+.diagram {
+  justify-content: center;
+  text-align: center;
+  font-family: "Abril Fatface", cursive !important;
+}
+@media (max-width: 767px) {
+  .container {
+    padding: 0.5rem;
+    width: 70%;
+    height: 80%;
+    top: 10%;
+    left: 15%;
+  }
+  .navbar {
+    opacity: 0;
+    position: absolute;
+  }
+  #logout-menu {
+    display: none;
+    position: absolute;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    padding: 0.8rem;
+    width: 65%;
+    height: 40%;
+    left: 18%;
+    top: 27%;
+  }
+  .navbar {
+    opacity: 0;
+    position: absolute;
+  }
+  #logout-menu {
+    display: none;
+    position: absolute;
+  }
+}
+@media (min-width: 992px) {
+  #hamburger-menu {
+    display: none;
+  }
+}
